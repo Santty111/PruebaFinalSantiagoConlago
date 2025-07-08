@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PruebaFinalSantiagoConlago.AgregarDispositivoPage"
-             Title="Registrar Dispositivo - Santiago Conlago - 06-10-2003">
-    <ScrollView>
-        <StackLayout Padding="20" Spacing="15">
-            <Label Text="Registrar Nuevo Dispositivo" FontSize="Title" HorizontalOptions="Center"/>
+             x:Class="PruebaFinalSantiagoConlago.Views.AgregarDispositivoPage"
+             Title="Registrar Dispositivo"
+             Padding="10">
 
-            <Frame BorderColor="LightGray" CornerRadius="10" Padding="15">
+    <ScrollView>
+        <StackLayout Spacing="15">
+            <Label Text="Registrar Nuevo Dispositivo" 
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Frame BorderColor="LightGray" 
+                   CornerRadius="10" 
+                   Padding="15"
+                   BackgroundColor="#F5F5F5">
                 <StackLayout Spacing="10">
-                    <Entry Placeholder="Nombre del dispositivo" Text="{Binding Dispositivo.Nombre}"/>
-                    <Entry Placeholder="Marca" Text="{Binding Dispositivo.Marca}"/>
+                    <Label Text="Nombre del dispositivo:"/>
+                    <Entry Placeholder="Ej: Laptop HP" 
+                           Text="{Binding Dispositivo.Nombre}"/>
+
+                    <Label Text="Marca:"/>
+                    <Entry Placeholder="Ej: HP, Dell, etc." 
+                           Text="{Binding Dispositivo.Marca}"/>
 
                     <StackLayout Orientation="Horizontal" Spacing="10">
-                        <CheckBox IsChecked="{Binding Dispositivo.GarantiaActiva}"/>
-                        <Label Text="Garantía Activa" VerticalOptions="Center"/>
+                        <CheckBox IsChecked="{Binding Dispositivo.GarantiaActiva}"
+                                  Color="#2196F3"/>
+                        <Label Text="Garantía Activa" 
+                               VerticalOptions="Center"/>
                     </StackLayout>
 
-                    <Entry Placeholder="Vida útil (meses)" 
+                    <Label Text="Vida útil (meses):"/>
+                    <Entry Placeholder="Ej: 24" 
                            Keyboard="Numeric" 
                            Text="{Binding Dispositivo.VidaUtilMeses}"/>
                 </StackLayout>
@@ -25,9 +41,10 @@
 
             <Button Text="Guardar Dispositivo" 
                     Command="{Binding GuardarCommand}"
-                    BackgroundColor="{StaticResource Primary}"
+                    BackgroundColor="#2196F3"
                     TextColor="White"
-                    CornerRadius="10"/>
+                    CornerRadius="10"
+                    HeightRequest="50"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

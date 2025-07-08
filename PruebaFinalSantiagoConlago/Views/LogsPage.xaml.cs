@@ -2,9 +2,9 @@ using PruebaFinalSantiagoConlago.ViewModels;
 
 namespace PruebaFinalSantiagoConlago.Views;
 
-public partial class AgregarDispositivoPage : ContentPage
+public partial class LogsPage : ContentPage
 {
-    public AgregarDispositivoPage(DispositivoViewModel viewModel)
+    public LogsPage(LogsViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

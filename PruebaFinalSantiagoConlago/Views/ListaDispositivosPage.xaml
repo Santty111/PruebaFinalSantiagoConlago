@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PruebaFinalSantiagoConlago.Views.ListaDispositivosPage"
+             Title="Lista de Dispositivos">
+
+    <RefreshView Command="{Binding RefrescarCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+        <CollectionView ItemsSource="{Binding Dispositivos}"
+                       SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="15"
+                           CornerRadius="10"
+                           Margin="5"
+                           BackgroundColor="#F5F5F5">
+                        <StackLayout>
+                            <Label Text="{Binding Nombre}" 
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+
+                            <Label Text="{Binding Marca}"
+                                   FontSize="14"/>
+
+                            <Grid ColumnDefinitions="*,*">
+                                <Label Text="{Binding GarantiaDisplay}"
+                                       Grid.Column="0"/>
+
+                                <Label Text="{Binding VidaUtilMeses, StringFormat='Vida útil: {0} meses'}"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"/>
+                            </Grid>
+
+                            <Label Text="{Binding FechaRegistro, StringFormat='Registrado: {0:dd/MM/yyyy HH:mm}'}"
+                                   FontSize="12"
+                                   TextColor="Gray"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
