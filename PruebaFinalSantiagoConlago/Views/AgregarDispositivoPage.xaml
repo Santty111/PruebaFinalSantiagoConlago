@@ -15,7 +15,7 @@
             <Frame BorderColor="LightGray" 
                    CornerRadius="10" 
                    Padding="15"
-                   BackgroundColor="#F5F5F5">
+                   BackgroundColor="Gray">
                 <StackLayout Spacing="10">
                     <Label Text="Nombre del dispositivo:"/>
                     <Entry Placeholder="Ej: Laptop HP" 

@@ -20,7 +20,7 @@ namespace PruebaFinalSantiagoConlago
 
             // Registrar servicios
             builder.Services.AddSingleton<DatabaseService>();
-            builder.Services.AddSingleton<FileService>(_ => new FileService("TuApellido")); // Cambiar por tu apellido
+            builder.Services.AddSingleton<FileService>(_ => new FileService("Conlago")); // Cambiar por tu apellido
 
             // Registrar ViewModels
             builder.Services.AddTransient<DispositivoViewModel>();
