@@ -16,5 +16,9 @@ namespace PruebaFinalSantiagoConlago.Models
         public bool GarantiaActiva { get; set; }
         public int VidaUtilMeses { get; set; }
         public DateTime FechaRegistro { get; set; }
+
+        // Propiedad para mostrar en la lista
+        public string GarantiaDisplay => GarantiaActiva ? "✅ Activa" : "❌ Inactiva";
     }
+
 }

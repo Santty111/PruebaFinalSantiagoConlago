@@ -17,20 +17,28 @@ namespace PruebaFinalSantiagoConlago.Services
             _database = new SQLiteAsyncConnection(
                 Path.Combine(FileSystem.AppDataDirectory, "dispositivos.db3"),
                 SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.SharedCache);
-            _database.CreateTableAsync<Dispositivo>().Wait();
+
+            InitializeDatabase();
         }
 
-        public Task<List<Dispositivo>> GetDispositivosAsync()
+        private async Task InitializeDatabase()
         {
-            return _database.Table<Dispositivo>().OrderByDescending(d => d.FechaRegistro).ToListAsync();
+            await _database.CreateTableAsync<Dispositivo>();
         }
 
-        public Task<int> SaveDispositivoAsync(Dispositivo dispositivo)
+        public async Task<List<Dispositivo>> GetDispositivosAsync()
+        {
+            return await _database.Table<Dispositivo>()
+                                .OrderByDescending(d => d.FechaRegistro)
+                                .ToListAsync();
+        }
+
+        public async Task<int> SaveDispositivoAsync(Dispositivo dispositivo)
         {
             dispositivo.FechaRegistro = DateTime.Now;
             return dispositivo.Id == 0 ?
-                _database.InsertAsync(dispositivo) :
-                _database.UpdateAsync(dispositivo);
+                await _database.InsertAsync(dispositivo) :
+                await _database.UpdateAsync(dispositivo);
         }
     }
 }

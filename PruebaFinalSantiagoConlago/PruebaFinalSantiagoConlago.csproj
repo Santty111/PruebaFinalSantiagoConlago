@@ -64,11 +64,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="AgregarDispositivoPage.xaml">
+	  <MauiXaml Update="Views\AgregarDispositivoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

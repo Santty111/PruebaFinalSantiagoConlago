@@ -17,7 +17,7 @@ namespace PruebaFinalSantiagoConlago.Services
             // Crear archivo si no existe
             if (!File.Exists(_filePath))
             {
-                File.WriteAllText(_filePath, "Registro de Logs - Control de Dispositivos\n\n");
+                File.WriteAllText(_filePath, "=== REGISTRO DE LOGS ===\n\n");
             }
         }
 

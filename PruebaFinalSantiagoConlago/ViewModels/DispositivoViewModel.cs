@@ -15,7 +15,7 @@ namespace PruebaFinalSantiagoConlago.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Dispositivo _dispositivo = new Dispositivo();
+        private Dispositivo _dispositivo = new();
         private readonly DatabaseService _dbService;
         private readonly FileService _fileService;
 
@@ -29,26 +29,33 @@ namespace PruebaFinalSantiagoConlago.ViewModels
             }
         }
 
-        public ICommand GuardarCommand => new Command(async () => await GuardarDispositivo());
+        public ICommand GuardarCommand { get; }
 
         public DispositivoViewModel(DatabaseService dbService, FileService fileService)
         {
             _dbService = dbService;
             _fileService = fileService;
+            GuardarCommand = new Command(async () => await GuardarDispositivo());
         }
 
         private async Task GuardarDispositivo()
         {
-            // Validación específica del ejercicio 6
-            if (Dispositivo.GarantiaActiva && Dispositivo.VidaUtilMeses < 12)
-            {
-                await Shell.Current.DisplayAlert("Error",
-                    "Cuando la garantía está activa, la vida útil debe ser al menos 12 meses", "OK");
-                return;
-            }
-
             try
             {
+                // Validación específica del ejercicio 6
+                if (Dispositivo.GarantiaActiva && Dispositivo.VidaUtilMeses < 12)
+                {
+                    await Shell.Current.DisplayAlert("Error",
+                        "Cuando la garantía está activa, la vida útil debe ser al menos 12 meses", "OK");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(Dispositivo.Nombre))
+                {
+                    await Shell.Current.DisplayAlert("Error", "El nombre del dispositivo es requerido", "OK");
+                    return;
+                }
+
                 await _dbService.SaveDispositivoAsync(Dispositivo);
                 await _fileService.AppendLogAsync(
                     $"Se incluyó el registro {Dispositivo.Nombre} el {DateTime.Now:dd/MM/yyyy HH:mm}");
