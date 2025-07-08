@@ -1,7 +1,7 @@
 ﻿using PruebaFinalSantiagoConlago.Services;
 using PruebaFinalSantiagoConlago.ViewModels;
 using PruebaFinalSantiagoConlago.Views;
-using PruebaFinalSantiagoConlago;
+using Microsoft.Maui.Controls;
 
 namespace PruebaFinalSantiagoConlago
 {
@@ -13,35 +13,35 @@ namespace PruebaFinalSantiagoConlago
 
             // Configuración de servicios
             var dbService = new DatabaseService();
-            var fileService = new FileService("TuApellido"); // REEMPLAZAR con tu apellido
+            var fileService = new FileService("Conlago");
 
             // Crear páginas con sus ViewModels
             var tabs = new TabbedPage
             {
                 Children =
-            {
-                new NavigationPage(new AgregarDispositivoPage(
-                    new DispositivoViewModel(dbService, fileService)))
                 {
-                    Title = "Registrar",
-                    IconImageSource = "add.png"
-                },
-                new NavigationPage(new ListaDispositivosPage(
-                    new ListaDispositivosViewModel(dbService)))
-                {
-                    Title = "Dispositivos",
-                    IconImageSource = "list.png"
-                },
-                new NavigationPage(new LogsPage(
-                    new LogsViewModel(fileService)))
-                {
-                    Title = "Logs",
-                    IconImageSource = "log.png"
+                    new NavigationPage(new AgregarDispositivoPage(
+                        new DispositivoViewModel(dbService, fileService)))
+                    {
+                        Title = "Registrar",
+                        IconImageSource = "add.png"
+                    },
+                    new NavigationPage(new ListaDispositivosPage(
+                        new ListaDispositivosViewModel(dbService)))
+                    {
+                        Title = "Dispositivos",
+                        IconImageSource = "list.png"
+                    },
+                    new NavigationPage(new LogsPage(
+                        new LogsViewModel(fileService)))
+                    {
+                        Title = "Logs",
+                        IconImageSource = "log.png"
+                    }
                 }
-            }
             };
 
             MainPage = tabs;
         }
+      }
     }
-}
