@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PruebaFinalSantiagoConlago.AgregarDispositivoPage"
+             Title="Registrar Dispositivo - Santiago Conlago - 06-10-2003">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Registrar Nuevo Dispositivo" FontSize="Title" HorizontalOptions="Center"/>
+
+            <Frame BorderColor="LightGray" CornerRadius="10" Padding="15">
+                <StackLayout Spacing="10">
+                    <Entry Placeholder="Nombre del dispositivo" Text="{Binding Dispositivo.Nombre}"/>
+                    <Entry Placeholder="Marca" Text="{Binding Dispositivo.Marca}"/>
+
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <CheckBox IsChecked="{Binding Dispositivo.GarantiaActiva}"/>
+                        <Label Text="Garantía Activa" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <Entry Placeholder="Vida útil (meses)" 
+                           Keyboard="Numeric" 
+                           Text="{Binding Dispositivo.VidaUtilMeses}"/>
+                </StackLayout>
+            </Frame>
+
+            <Button Text="Guardar Dispositivo" 
+                    Command="{Binding GuardarCommand}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    CornerRadius="10"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

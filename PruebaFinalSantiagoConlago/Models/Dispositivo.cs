@@ -7,13 +7,14 @@ using SQLite;
 
 namespace PruebaFinalSantiagoConlago.Models
 {
-    public class Equipo
+    public class Dispositivo
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Dispositivo { get; set; }
+        public string Nombre { get; set; }
         public string Marca { get; set; }
         public bool GarantiaActiva { get; set; }
         public int VidaUtilMeses { get; set; }
+        public DateTime FechaRegistro { get; set; }
     }
 }
